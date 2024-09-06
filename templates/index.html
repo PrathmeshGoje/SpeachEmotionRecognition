@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+</head>
+<body>
+    <h1>Emotion Detection from Audio</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Choose an audio file (WAV format):</label>
+        <input type="file" id="file" name="file" accept=".wav">
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if emotion %}
+        <h2>Emotion Detection Result</h2>
+        <p>Emotion of the audio is: {{ emotion }}</p>
+        <audio controls>
+            <source src="{{ url_for('static', filename=audio_file.split('/')[-1]) }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+</body>
+</html>
